@@ -8,40 +8,31 @@ export default class PokemonClient {
   }
 
   async #getName(id) {
-    return await this.httpClient
-      .get(`pokemon-species/${id}`)
-      .then((res) => res.data.names.find((item) => item.language.name == 'ko'))
-      .then((res) => res.name);
+    const response = await this.httpClient.get(`pokemon-species/${id}`);
+    return response.data.names.find((item) => item.language.name == 'ko').name;
   }
 
   async #getDescription(id) {
-    return await this.httpClient
-      .get(`pokemon-species/${id}`)
-      .then((res) =>
-        res.data.flavor_text_entries.find((item) => item.language.name === 'ko')
-      )
-      .then((res) => res.flavor_text);
+    const response = await this.httpClient.get(`pokemon-species/${id}`);
+    return response.data.flavor_text_entries.find(
+      (item) => item.language.name === 'ko'
+    ).flavor_text;
   }
 
-  async #getFrontImage(id) {
-    return await this.httpClient
-      .get(`pokemon-form/${id}`)
-      .then((res) => res.data.sprites)
-      .then((res) => res.front_default);
-  }
-
-  async #getBackImage(id) {
-    return await this.httpClient
-      .get(`pokemon-form/${id}`)
-      .then((res) => res.data.sprites)
-      .then((res) => res.back_default);
+  async #getImage(id, isBackImage = false) {
+    const response = await this.httpClient.get(`pokemon-form/${id}`);
+    return !isBackImage
+      ? response.data.sprites.front_default
+      : response.data.sprites.back_default;
   }
 
   async getPokemonInfo(id) {
-    const name = await this.#getName(id);
-    const description = await this.#getDescription(id);
-    const frontImage = await this.#getFrontImage(id);
-    const backImage = await this.#getBackImage(id);
+    const [name, description, frontImage, backImage] = await Promise.all([
+      this.#getName(id),
+      this.#getDescription(id),
+      this.#getImage(id),
+      this.#getImage(id, true),
+    ]);
     return { id, name, description, frontImage, backImage };
   }
 }
