@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SearchInput from './SearchInput';
 
 export default function Header() {
   return (
@@ -8,11 +9,7 @@ export default function Header() {
           포켓몬 도감
         </h1>
       </Link>
-      <nav className='flex gap-7 font-galmuri9'>
-        <Link to={'/'}>메인</Link>
-        <Link to={'search'}>검색</Link>
-        <Link to={'favorite'}>찜 목록</Link>
-      </nav>
+      <SearchInput />
     </header>
   );
 }
