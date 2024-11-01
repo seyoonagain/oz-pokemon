@@ -5,12 +5,12 @@ export default function SearchInput() {
   return (
     <>
       <form>
+        <button>🔎</button>
         <input
           type='text'
-          className='w-48 bg-transparent border-b border-zinc-200'
+          className='w-72 bg-transparent border-b border-zinc-200 ml-3'
           onChange={(e) => navigate(`/search?pokemon=${e.target.value}`)}
         />
-        <button>🔎</button>
       </form>
     </>
   );
