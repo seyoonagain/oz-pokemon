@@ -14,7 +14,7 @@ export default function Detail() {
         {pokemon.description}
       </pre>
       <FlipCard frontImage={pokemon.frontImage} backImage={pokemon.backImage} />
-      <FavoriteButton id={id} />
+      <FavoriteButton id={Number(id)} />
     </section>
   );
 }
