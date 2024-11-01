@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import FavoriteButton from './FavoriteButton';
 
 export default function PokemonCard({ pokemon }) {
   const navigate = useNavigate();
@@ -10,9 +11,10 @@ export default function PokemonCard({ pokemon }) {
       <div className='border border-zinc-400 w-4/5 h-2/3 flex justify-center items-center mt-5 bg-zinc-300'>
         <img src={pokemon.frontImage} alt={pokemon.name} />
       </div>
-      <p className='absolute bottom-4 right-4 text-zinc-900 font-dungGeunMo'>
+      <div className='absolute bottom-4 right-4 text-zinc-900 font-dungGeunMo'>
         {pokemon.name}
-      </p>
+      </div>
+      <FavoriteButton id={pokemon.id} />
     </div>
   );
 }
