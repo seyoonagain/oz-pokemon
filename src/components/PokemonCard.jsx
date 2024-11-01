@@ -5,7 +5,7 @@ export default function PokemonCard({ pokemon }) {
   return (
     <div
       className='w-52 h-60 flex items-start justify-center border border-zinc-900 relative hover:scale-105 transition-all duration-300 cursor-pointer bg-zinc-100'
-      onClick={() => navigate(`detail/${pokemon.id}`)}
+      onClick={() => navigate(`/detail/${pokemon.id}`)}
     >
       <div className='border border-zinc-400 w-4/5 h-2/3 flex justify-center items-center mt-5 bg-zinc-300'>
         <img src={pokemon.frontImage} alt={pokemon.name} />
