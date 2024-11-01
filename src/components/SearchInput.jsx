@@ -8,7 +8,7 @@ export default function SearchInput() {
         <button>🔎</button>
         <input
           type='text'
-          className='w-72 bg-transparent border-b border-zinc-200 ml-3'
+          className='w-72 bg-transparent border-b border-zinc-200 ml-3 font-dungGeunMo px-2'
           onChange={(e) => navigate(`/search?pokemon=${e.target.value}`)}
         />
       </form>

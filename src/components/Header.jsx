@@ -11,7 +11,9 @@ export default function Header() {
             포켓몬 도감
           </h1>
         </Link>
-        <Link to='/favorite'>찜 목록</Link>
+        <Link to='/favorite'>
+          <p className='font-galmuri9'>찜 목록</p>
+        </Link>
       </div>
       <SearchInput />
     </header>
