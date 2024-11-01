@@ -21,3 +21,16 @@ export const pokemonSlice = createSlice({
       });
   },
 });
+
+export const favoriteSlice = createSlice({
+  name: 'favorite',
+  initialState: [1],
+  reducers: {
+    addToFavorite(state, action) {
+      state.push(action.payload);
+    },
+    removeFromFavorite(state, action) {
+      state.splice(state.indexOf(action.payload), 1);
+    },
+  },
+});

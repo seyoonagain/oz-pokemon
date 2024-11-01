@@ -11,3 +11,17 @@ export const selectPokemonByRegexp = (regexp) =>
     (state) => state.pokemon.data,
     (pokemonData) => pokemonData.filter((pokemon) => pokemon.name.match(regexp))
   );
+
+export const isInFavoriteList = (id) =>
+  createSelector(
+    (state) => state.favorite,
+    (pokemonData) => pokemonData.includes(id)
+  );
+
+export const selectFavorite = () =>
+  createSelector(
+    (state) => state.pokemon.data,
+    (state) => state.favorite,
+    (pokemonData, favoriteId) =>
+      pokemonData.filter((pokemon) => favoriteId.includes(pokemon.id))
+  );
