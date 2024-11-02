@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), svgr()],
   build: {
     outDir: 'docs',
-    rollupOPotions: {
+    rollupOptions: {
       output: {
         manualChunks: (id) => {
           if (id.indexOf('node_modules') !== -1) {
